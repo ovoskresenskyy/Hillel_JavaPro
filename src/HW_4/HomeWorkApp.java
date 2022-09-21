@@ -8,8 +8,8 @@ public class HomeWorkApp {
         compareNumbers();
         sumInRange();
         isNumberPositive();
+        printInCycle();
     }
-
 
     static void printThreeWords() {
         System.out.println("1. Print three words");
@@ -58,7 +58,7 @@ public class HomeWorkApp {
         System.out.println();
     }
 
-    static void sumInRange(){
+    static void sumInRange() {
         int a = getRandomInt(-20, 20);
         int b = getRandomInt(-20, 20);
 
@@ -74,7 +74,7 @@ public class HomeWorkApp {
         return sum >= 10 && sum <= 20;
     }
 
-    static void isNumberPositive(){
+    static void isNumberPositive() {
         int a = getRandomInt(-10, 10);
 
         System.out.println("6. Is number positive");
@@ -83,8 +83,27 @@ public class HomeWorkApp {
         System.out.println();
     }
 
-    static boolean isNumberPositive(int number){
+    static boolean isNumberPositive(int number) {
         return number >= 0;
+    }
+
+    static void printInCycle() {
+        String text = "Hillel";
+        int quantity = getRandomInt(-10, 10);
+
+        System.out.println("7. Printing in cycle");
+        System.out.println("Text: " + text);
+        System.out.println("Quantity: " + quantity);
+        if (isNumberPositive(quantity - 1)) {
+            printInCycle(text, quantity);
+        } else System.out.println("Cant print. Quantity must be > 0");
+        System.out.println();
+    }
+
+    static void printInCycle(String text, int qty) {
+        for (int i = 0; i < qty; i++) {
+            System.out.println(" - " + (i + 1) + ". " + text);
+        }
     }
 
     static int getRandomInt(int minValue, int maxValue) {
