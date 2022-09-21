@@ -7,6 +7,7 @@ public class HomeWorkApp {
         printColor();
         compareNumbers();
         sumInRange();
+        isNumberPositive();
     }
 
 
@@ -28,7 +29,7 @@ public class HomeWorkApp {
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         System.out.println("a + b = " + sum);
-        System.out.println("Sum is " + (sum >= 0 ? "positive" : "negative"));
+        System.out.println("Sum is " + (isNumberPositive(sum) ? "positive" : "negative"));
         System.out.println();
     }
 
@@ -58,17 +59,32 @@ public class HomeWorkApp {
     }
 
     static void sumInRange(){
-        System.out.println("5. Sum in range from 10 to 20 including");
         int a = getRandomInt(-20, 20);
         int b = getRandomInt(-20, 20);
+
+        System.out.println("5. Sum in range from 10 to 20 including");
         System.out.println("a = " + a);
         System.out.println("b = " + b);
         System.out.println("is (a + b) in range? - " + sumInRange(a, b));
+        System.out.println();
     }
 
     static boolean sumInRange(int a, int b) {
         int sum = a + b;
         return sum >= 10 && sum <= 20;
+    }
+
+    static void isNumberPositive(){
+        int a = getRandomInt(-10, 10);
+
+        System.out.println("6. Is number positive");
+        System.out.println("a = " + a);
+        System.out.println("It's " + (isNumberPositive(a) ? "positive" : "negative"));
+        System.out.println();
+    }
+
+    static boolean isNumberPositive(int number){
+        return number >= 0;
     }
 
     static int getRandomInt(int minValue, int maxValue) {
