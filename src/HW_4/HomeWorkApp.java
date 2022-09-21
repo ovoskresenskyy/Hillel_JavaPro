@@ -9,6 +9,7 @@ public class HomeWorkApp {
         sumInRange();
         isNumberPositive();
         printInCycle();
+        isYearLeap();
     }
 
     static void printThreeWords() {
@@ -105,6 +106,21 @@ public class HomeWorkApp {
             System.out.println(" - " + (i + 1) + ". " + text);
         }
     }
+
+    static void isYearLeap() {
+        int[] yearsArray = {1895, 1896, 1897, 1900, 1901, 1996, 1997, 1999, 2000, 2001, 2004, 2100};
+
+        System.out.println("8. Is year leap");
+        for (int year: yearsArray) {
+            System.out.println(year + (isYearLeap(year) ? " is leap" : " is not leap"));
+        }
+        System.out.println();
+    }
+
+    static boolean isYearLeap(int year) {
+        return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+    }
+
 
     static int getRandomInt(int minValue, int maxValue) {
         return (int) ((Math.random() * (maxValue - minValue)) + minValue);
