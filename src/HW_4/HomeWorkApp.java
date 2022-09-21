@@ -6,6 +6,7 @@ public class HomeWorkApp {
         checkSumSign();
         printColor();
         compareNumbers();
+        sumInRange();
     }
 
 
@@ -56,7 +57,21 @@ public class HomeWorkApp {
         System.out.println();
     }
 
-    static int getRandomInt(int minValue, int maxValue){
+    static void sumInRange(){
+        System.out.println("5. Sum in range from 10 to 20 including");
+        int a = getRandomInt(-20, 20);
+        int b = getRandomInt(-20, 20);
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        System.out.println("is (a + b) in range? - " + sumInRange(a, b));
+    }
+
+    static boolean sumInRange(int a, int b) {
+        int sum = a + b;
+        return sum >= 10 && sum <= 20;
+    }
+
+    static int getRandomInt(int minValue, int maxValue) {
         return (int) ((Math.random() * (maxValue - minValue)) + minValue);
     }
 }
