@@ -10,14 +10,18 @@ public class Main {
     public static final char SEPARATOR = 'Z';
 
     public static void main(String[] args) {
+        reverse();
+        calculator();
+    }
 
+    private static void reverse(){
         String text = "ZknahTZuoyZ,doGZiZmaZtonZ!lacsom";
         String reversedText = reverse(text);
 
+        System.out.println("1. Reverse");
         System.out.println(text);
         System.out.println(reversedText);
-
-        calculator();
+        System.out.println();
     }
 
     private static String reverse(String text) {
@@ -49,6 +53,7 @@ public class Main {
     }
 
     private static void calculator() {
+        System.out.println("2. Simple calculator");
 
         Scanner scanner = new Scanner(System.in);
 
