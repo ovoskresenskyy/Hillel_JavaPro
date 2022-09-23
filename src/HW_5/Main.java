@@ -1,5 +1,6 @@
 package HW_5;
 
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
@@ -15,9 +16,11 @@ public class Main {
 
         System.out.println(text);
         System.out.println(reversedText);
+
+        calculator();
     }
 
-    public static String reverse(String text) {
+    private static String reverse(String text) {
 
         reversedText = new char[text.length()];
         reverseIndex = 0;
@@ -43,5 +46,42 @@ public class Main {
             reversedText[reverseIndex++] = symbolFromStack == SEPARATOR ? ' ' : symbolFromStack;
         }
         stack.push(SEPARATOR);
+    }
+
+    private static void calculator() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        double firstValue = getValue(scanner);
+        char operation = getOperation(scanner);
+        double secondValue = getValue(scanner);
+
+        calculate(firstValue, operation, secondValue);
+    }
+
+    private static double getValue(Scanner scanner){
+        System.out.print("Insert the number: ");
+        return scanner.nextInt();
+    }
+
+    private static char getOperation(Scanner scanner) {
+        System.out.println("Available operations: +, -, *, /");
+        System.out.print("Insert operation: ");
+        return scanner.next().charAt(0);
+    }
+
+    private static void calculate(double firstValue, char operation, double secondValue){
+        String textToPrint = firstValue
+                + " " + operation
+                + " " + secondValue
+                + " = " + switch (operation){
+            case ('+') -> firstValue + secondValue;
+            case ('-') -> firstValue - secondValue;
+            case ('*') -> firstValue * secondValue;
+            case ('/') -> firstValue / secondValue;
+            default -> "Operation is not available";
+        };
+
+        System.out.println(textToPrint);
     }
 }
