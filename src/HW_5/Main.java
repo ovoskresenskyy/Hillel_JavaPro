@@ -14,7 +14,7 @@ public class Main {
         calculator();
     }
 
-    private static void reverse(){
+    private static void reverse() {
         String text = "ZknahTZuoyZ,doGZiZmaZtonZ!lacsom";
         String reversedText = reverse(text);
 
@@ -52,41 +52,64 @@ public class Main {
         stack.push(SEPARATOR);
     }
 
+    private static boolean calculatorIsOn = true;
+
     private static void calculator() {
         System.out.println("2. Simple calculator");
 
         Scanner scanner = new Scanner(System.in);
-
-        double firstValue = getValue(scanner);
-        char operation = getOperation(scanner);
-        double secondValue = getValue(scanner);
-
-        calculate(firstValue, operation, secondValue);
+        do {
+            calculate(scanner);
+        } while (calculatorIsOn);
+        scanner.close();
     }
 
-    private static double getValue(Scanner scanner){
-        System.out.print("Insert the number: ");
-        return scanner.nextInt();
+    private static void calculate(Scanner scanner) {
+
+        String userInput = getOperation(scanner);
+
+        if (userInput.equals("Exit")) {
+            calculatorIsOn = false;
+        } else {
+            char operation = userInput.charAt(0);
+
+            if (operationIsAvailable(operation)) {
+                double firstNumber = getNumber(scanner, true);
+                double secondNumber = getNumber(scanner, false);
+                double value = getValue(firstNumber, operation, secondNumber);
+
+                System.out.println(firstNumber + " " + operation + " " + secondNumber + " = " + value);
+            }
+        }
+
     }
 
-    private static char getOperation(Scanner scanner) {
-        System.out.println("Available operations: +, -, *, /");
-        System.out.print("Insert operation: ");
-        return scanner.next().charAt(0);
-    }
-
-    private static void calculate(double firstValue, char operation, double secondValue){
-        String textToPrint = firstValue
-                + " " + operation
-                + " " + secondValue
-                + " = " + switch (operation){
-            case ('+') -> firstValue + secondValue;
-            case ('-') -> firstValue - secondValue;
-            case ('*') -> firstValue * secondValue;
-            case ('/') -> firstValue / secondValue;
-            default -> "Operation is not available";
+    private static boolean operationIsAvailable(char operation) {
+        return switch (operation) {
+            case '+', '-', '*', '/' -> true;
+            default -> false;
         };
-
-        System.out.println(textToPrint);
     }
+
+    private static double getNumber(Scanner scanner, boolean firstNumber) {
+        System.out.print("Insert the " + (firstNumber ? "first " : "second ") + "number: ");
+        return scanner.nextDouble();
+    }
+
+    private static String getOperation(Scanner scanner) {
+        System.out.println("Lets calculate!");
+        System.out.println("Available operations: +, -, *, / or 'Exit' to close calculator");
+        System.out.print("Insert operation: ");
+        return scanner.next();
+    }
+
+    private static double getValue(double firstNumber, char operation, double secondNumber) {
+        return switch (operation) {
+            case '-' -> firstNumber - secondNumber;
+            case '*' -> firstNumber * secondNumber;
+            case '/' -> firstNumber / secondNumber;
+            default -> firstNumber + secondNumber;
+        };
+    }
+
 }
