@@ -74,8 +74,11 @@ public class Main {
             char operation = userInput.charAt(0);
 
             if (operationIsAvailable(operation)) {
-                double firstNumber = getNumber(scanner, true);
-                double secondNumber = getNumber(scanner, false);
+                System.out.print("Insert the first number: ");
+                double firstNumber = scanner.nextDouble();
+                System.out.print("Insert the second number: ");
+                double secondNumber = scanner.nextDouble();
+
                 double value = getValue(firstNumber, operation, secondNumber);
 
                 System.out.println(firstNumber + " " + operation + " " + secondNumber + " = " + value);
@@ -89,11 +92,6 @@ public class Main {
             case '+', '-', '*', '/' -> true;
             default -> false;
         };
-    }
-
-    private static double getNumber(Scanner scanner, boolean firstNumber) {
-        System.out.print("Insert the " + (firstNumber ? "first " : "second ") + "number: ");
-        return scanner.nextDouble();
     }
 
     private static String getOperation(Scanner scanner) {
