@@ -1,60 +1,25 @@
 package HW_5;
 
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main {
 
-    public static char[] reversedText;
-    public static int reverseIndex;
-    public static final char SEPARATOR = 'Z';
-
     public static void main(String[] args) {
-        reverse();
-        calculator();
+        reverseEachWordInSentence("ZknahTZuoyZ,doGZiZmaZtonZ!lacsom", "Z");
+        simpleCalculator();
     }
 
-    private static void reverse() {
-        String text = "ZknahTZuoyZ,doGZiZmaZtonZ!lacsom";
-        String reversedText = reverse(text);
+    private static void reverseEachWordInSentence(String sentence, String separator) {
+        String[] words = sentence.split(separator);
 
-        System.out.println("1. Reverse");
-        System.out.println(text);
-        System.out.println(reversedText);
-        System.out.println();
-    }
-
-    private static String reverse(String text) {
-
-        reversedText = new char[text.length()];
-        reverseIndex = 0;
-
-        Stack<Character> stack = new Stack();
-
-        for (char character : text.toCharArray()) {
-            if (character == SEPARATOR && !stack.isEmpty()) {
-                getFromStack(stack);
-            } else {
-                stack.push(character);
-            }
+        for (String word : words) {
+            System.out.print(new StringBuilder(word).reverse() + " ");
         }
-        getFromStack(stack);
-
-        return String.copyValueOf(reversedText);
-    }
-
-    private static void getFromStack(Stack<Character> stack) {
-        char symbolFromStack;
-        while (!stack.isEmpty()) {
-            symbolFromStack = stack.pop();
-            reversedText[reverseIndex++] = symbolFromStack == SEPARATOR ? ' ' : symbolFromStack;
-        }
-        stack.push(SEPARATOR);
     }
 
     private static boolean calculatorIsOn = true;
 
-    private static void calculator() {
+    private static void simpleCalculator() {
         System.out.println("2. Simple calculator");
 
         Scanner scanner = new Scanner(System.in);
