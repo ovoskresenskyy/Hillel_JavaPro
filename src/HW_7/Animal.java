@@ -2,11 +2,11 @@ package HW_7;
 
 public class Animal {
 
-    private final String name;
+    private final String NAME;
     private static int classSampleCounter;
 
     public Animal(String name) {
-        this.name = name;
+        this.NAME = name;
         classSampleCounter++;
     }
 
@@ -20,7 +20,7 @@ public class Animal {
         System.out.println("Not sure " + getName() + " can swim.");
     }
 
-    public String getName() { return name; }
+    public String getName() { return NAME; }
 
     public static int getClassSampleCounter() { return classSampleCounter; }
 }
