@@ -1,8 +1,5 @@
 package HW_9.FirstTask;
 
-import HW_9.FirstTask.GeometricFigure;
-import HW_9.FirstTask.Point;
-
 public class Square implements GeometricFigure {
 
     private final Point ApexA, ApexB;

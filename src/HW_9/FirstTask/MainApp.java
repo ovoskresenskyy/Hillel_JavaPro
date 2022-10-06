@@ -2,11 +2,6 @@ package HW_9.FirstTask;
 
 public class MainApp {
     public static void main(String[] args) {
-
-        calculateAreaOfGeometricFigures();
-    }
-
-    private static void calculateAreaOfGeometricFigures() {
         GeometricFigure myCircle = new Circle(
                 new Point(1, 1),
                 new Point(3, 3)
@@ -20,7 +15,8 @@ public class MainApp {
         GeometricFigure myTriangle = new Triangle(
                 new Point(-2, 4),
                 new Point(10, -5),
-                new Point(5, 8));
+                new Point(5, 8)
+        );
 
         GeometricFigure[] geometricFigures = {myCircle, mySquare, myTriangle};
 
@@ -29,6 +25,5 @@ public class MainApp {
             areaTotal += figure.getArea();
         }
         System.out.println("Sum of areas = " + areaTotal + "\n");
-
     }
 }

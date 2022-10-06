@@ -5,8 +5,11 @@ public interface GeometricFigure {
 
     double getArea();
 
-    default double getSegmentLength(Point first, Point second) {
-        return Math.sqrt(Math.pow(second.x() - first.x(), 2.0) + Math.pow(second.y() - first.y(), 2.0));
+    default double getSegmentLength(Point a, Point b) {
+        return Math.sqrt(
+                Math.pow(b.getX() - a.getX(), 2.0)
+                        + Math.pow(b.getY() - a.getY(), 2.0)
+        );
     }
 
 }
