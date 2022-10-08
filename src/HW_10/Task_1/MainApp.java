@@ -5,38 +5,29 @@ import java.util.*;
 public class MainApp {
     public static void main(String[] args) {
 
+        ListProcessing<String> stringListProcessing = new ListProcessing<>();
+        ListProcessing<Integer> integerListProcessing = new ListProcessing<>();
+
         // Task # 1
         String[] nationalSalute = "Glory to Ukraine! Glory to the heroes! Glory of the nation! Death to the enemies!".split(" ");
         List<String> listOfWords = new ArrayList<>(Arrays.asList(nationalSalute));
-        System.out.println(countOccurrence(listOfWords, "Glory"));
+        System.out.println(stringListProcessing.countOccurrence(listOfWords, "Glory"));
+        System.out.println();
 
         // Task # 2
         Integer[] independenceDay = {1, 9, 9, 1, 0, 8, 2, 4};
-        List<Integer> independenceDayAsList = toList(independenceDay);
+        List<Integer> independenceDayAsList = integerListProcessing.toList(independenceDay);
         System.out.println(independenceDayAsList);
+        System.out.println();
 
         // Task # 3
-        System.out.println(findUnique(independenceDayAsList));
+        System.out.println(integerListProcessing.findUnique(independenceDayAsList));
+        System.out.println();
+
+        // Task # 4
+        stringListProcessing.calcOccurrence(listOfWords);
+        System.out.println();
 
     }
 
-    public static int countOccurrence(List<String> incomeList, String occurrence) {
-        return Collections.frequency(incomeList, occurrence);
-    }
-
-    public static List<Integer> toList(Integer[] incomeArray){
-        List<Integer> outputList = new ArrayList<>();
-        Collections.addAll(outputList, incomeArray);
-        return outputList;
-    }
-
-    public static List<Integer> findUnique(List<Integer> incomeList){
-        List<Integer> uniqueValues = new ArrayList<>();
-
-        incomeList.forEach(value -> {
-            if (!uniqueValues.contains(value)) uniqueValues.add(value);
-        });
-
-        return uniqueValues;
-    }
 }
