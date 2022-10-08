@@ -9,11 +9,8 @@ public class MyPair {
         this.value = value;
     }
 
-    public String getKey() {
-        return key;
-    }
-
-    public int getValue() {
-        return value;
+    @Override
+    public String toString() {
+        return "Word: " + key + ", occurrence: " + value;
     }
 }

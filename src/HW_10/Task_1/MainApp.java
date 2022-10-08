@@ -32,7 +32,7 @@ public class MainApp {
         // Task #5
         List<MyPair> pairList = stringListProcessing.findOccurrence(listOfWords, uniqueWordsInList);
         for (MyPair myPair : pairList) {
-            System.out.println("Word: " + myPair.getKey() + ", occurrence: " + myPair.getValue());
+            System.out.println(myPair);
         }
     }
 
