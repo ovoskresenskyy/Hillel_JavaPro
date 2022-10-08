@@ -25,9 +25,15 @@ public class MainApp {
         System.out.println();
 
         // Task # 4
-        stringListProcessing.calcOccurrence(listOfWords);
+        List<String> uniqueWordsInList = stringListProcessing.findUnique(listOfWords);
+        stringListProcessing.calcOccurrence(listOfWords, uniqueWordsInList);
         System.out.println();
 
+        // Task #5
+        List<MyPair> pairList = stringListProcessing.findOccurrence(listOfWords, uniqueWordsInList);
+        for (MyPair myPair : pairList) {
+            System.out.println("Word: " + myPair.getKey() + ", occurrence: " + myPair.getValue());
+        }
     }
 
 }

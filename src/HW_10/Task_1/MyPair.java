@@ -1,16 +1,19 @@
 package HW_10.Task_1;
 
-public class MyPair<T, E> {
-    private final T key;
-    private final E value;
+public class MyPair {
+    private final String key;
+    private final int value;
 
-    public MyPair(T key, E value) {
+    public MyPair(String key, int value) {
         this.key = key;
         this.value = value;
     }
 
-    @Override
-    public String toString() {
-        return key + ": " + value;
+    public String getKey() {
+        return key;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

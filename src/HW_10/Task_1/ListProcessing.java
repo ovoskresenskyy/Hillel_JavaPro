@@ -26,12 +26,19 @@ public class ListProcessing<T> {
         return uniqueValues;
     }
 
-    public void calcOccurrence(List<T> inputList) {
-        List<T> uniqueValues = findUnique(inputList);
-
+    public void calcOccurrence(List<T> inputList, List<T> uniqueValues) {
         for (T value : uniqueValues) {
             System.out.println(value + ": " + countOccurrence(inputList, value));
         }
     }
 
+    public List<MyPair> findOccurrence(List<T> inputList, List<T> uniqueValues) {
+        List<MyPair> outputList = new ArrayList<>();
+
+        for (T value : uniqueValues) {
+            outputList.add(new MyPair(value.toString(), countOccurrence(inputList, value)));
+        }
+
+        return outputList;
+    }
 }
