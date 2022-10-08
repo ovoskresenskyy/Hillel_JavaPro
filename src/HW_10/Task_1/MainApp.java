@@ -12,7 +12,11 @@ public class MainApp {
 
         // Task # 2
         Integer[] independenceDay = {1, 9, 9, 1, 0, 8, 2, 4};
-        System.out.println(toList(independenceDay));
+        List<Integer> independenceDayAsList = toList(independenceDay);
+        System.out.println(independenceDayAsList);
+
+        // Task # 3
+        System.out.println(findUnique(independenceDayAsList));
 
     }
 
@@ -24,5 +28,15 @@ public class MainApp {
         List<Integer> outputList = new ArrayList<>();
         Collections.addAll(outputList, incomeArray);
         return outputList;
+    }
+
+    public static List<Integer> findUnique(List<Integer> incomeList){
+        List<Integer> uniqueValues = new ArrayList<>();
+
+        incomeList.forEach(value -> {
+            if (!uniqueValues.contains(value)) uniqueValues.add(value);
+        });
+
+        return uniqueValues;
     }
 }
