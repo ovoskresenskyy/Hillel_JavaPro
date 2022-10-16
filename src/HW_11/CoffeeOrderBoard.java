@@ -16,14 +16,16 @@ public class CoffeeOrderBoard {
         orderList.addLast(newOrder);
     }
 
-    public void deliver() {
-        if (orderList.isEmpty()) return;
+    public Order deliver() {
+        if (orderList.isEmpty()) return null;
 
-        orderList.removeFirst();
+        return orderList.removeFirst();
     }
 
-    public void deliver(int orderNumber) {
-        if (orderList.isEmpty()) return;
+    public Order deliver(int orderNumber) {
+        if (orderList.isEmpty()) return null;
+
+        Order outputOrder = null;
 
         int left = 0;
         int right = orderList.size() - 1;
@@ -35,10 +37,11 @@ public class CoffeeOrderBoard {
             } else if (orderList.get(middle).getNumber() < orderNumber) {
                 left = middle + 1;
             } else {
-                orderList.remove(middle);
+                outputOrder = orderList.remove(middle);
                 break;
             }
         }
+        return outputOrder;
     }
 
     public void draw() {
