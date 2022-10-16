@@ -25,7 +25,7 @@ public class CoffeeOrderBoard {
     public Order deliver(int orderNumber) {
         if (orderList.isEmpty()) return null;
 
-        Order outputOrder = null;
+        Order orderToDeliver = null;
 
         int left = 0;
         int right = orderList.size() - 1;
@@ -37,11 +37,11 @@ public class CoffeeOrderBoard {
             } else if (orderList.get(middle).getNumber() < orderNumber) {
                 left = middle + 1;
             } else {
-                outputOrder = orderList.remove(middle);
+                orderToDeliver = orderList.remove(middle);
                 break;
             }
         }
-        return outputOrder;
+        return orderToDeliver;
     }
 
     public void draw() {
