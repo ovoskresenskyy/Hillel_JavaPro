@@ -45,13 +45,12 @@ public class CoffeeOrderBoard {
     }
 
     public void draw() {
-        System.out.println("-----------");
-        System.out.println(" Num | Name");
-        System.out.println("-----------");
+        StringBuilder textToPrint = new StringBuilder();
+        textToPrint.append("-----------\n Num | Name\n-----------\n");
 
         for (Order order : orderList) {
-            System.out.println(order.toString());
+            textToPrint.append(order.toString()).append("\n");
         }
-        System.out.println();
+        System.out.println(textToPrint);
     }
 }
