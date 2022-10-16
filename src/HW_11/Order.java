@@ -15,6 +15,6 @@ public class Order {
 
     @Override
     public String toString() {
-        return "  " + number + "  | " + clientName;
+        return "  " + number + "  | " + clientName + "\n";
     }
 }

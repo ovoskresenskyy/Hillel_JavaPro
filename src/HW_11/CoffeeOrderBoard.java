@@ -48,9 +48,8 @@ public class CoffeeOrderBoard {
         StringBuilder textToPrint = new StringBuilder();
         textToPrint.append("-----------\n Num | Name\n-----------\n");
 
-        for (Order order : orderList) {
-            textToPrint.append(order.toString()).append("\n");
-        }
+        orderList.forEach(textToPrint::append);
+
         System.out.println(textToPrint);
     }
 }
