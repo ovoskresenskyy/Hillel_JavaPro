@@ -12,8 +12,7 @@ public class CoffeeOrderBoard {
     }
 
     public void add(String clientName) {
-        Order newOrder = new Order(++lastOrderNumber, clientName);
-        orderList.addLast(newOrder);
+        orderList.addLast(new Order(++lastOrderNumber, clientName));
     }
 
     public Order deliver() {
