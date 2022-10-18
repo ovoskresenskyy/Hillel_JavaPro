@@ -16,9 +16,7 @@ public class CoffeeOrderBoard {
     }
 
     public Order deliver() {
-        if (orderList.isEmpty()) return null;
-
-        return orderList.removeFirst();
+        return orderList.isEmpty() ? null : orderList.removeFirst();
     }
 
     public Order deliver(int orderNumber) {
