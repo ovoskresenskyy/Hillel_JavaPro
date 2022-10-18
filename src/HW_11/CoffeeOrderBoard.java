@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
 
-    private int lastOrderNumber;
     private final LinkedList<Order> orderList = new LinkedList<>();
 
     public void add() {
@@ -12,7 +11,7 @@ public class CoffeeOrderBoard {
     }
 
     public void add(String clientName) {
-        orderList.addLast(new Order(++lastOrderNumber, clientName));
+        orderList.addLast(new Order(clientName));
     }
 
     public Order deliver() {
