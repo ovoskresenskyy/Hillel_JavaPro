@@ -1,4 +1,4 @@
-package HW_12_Canceled;
+package HW_12;
 
 import java.util.*;
 
@@ -6,52 +6,49 @@ public class FileNavigator {
 
     private final HashMap<String, ArrayList<FileData>> savedFiles = new HashMap<>();
 
-    public void add(FileData file) {
-        String key = file.getPath();
-
-        if (!savedFiles.containsKey(key)) {
-            savedFiles.put(key, new ArrayList<>());
-        }
-        savedFiles.get(key).add(file);
-    }
-
     public void add(String path, FileData file) {
+
         if (!file.getPath().equals(path)) {
             System.out.println("Wrong path!");
             return;
         }
 
-        add(file);
+        if (!savedFiles.containsKey(path)) savedFiles.put(path, new ArrayList<>());
+        savedFiles.get(path).add(file);
     }
 
+    /**
+     * savedFiles are private, so that method is like Getter (not wrapper)
+     */
     public ArrayList<FileData> find(String path) {
         return savedFiles.get(path);
     }
 
     public ArrayList<FileData> filterBySize(int maxBytes) {
 
-        ArrayList<FileData> allFilesSortedBySize = sortBySize();
+        ArrayList<FileData> filesSortedBySize = sortSavedFilesBySize();
         ArrayList<FileData> filesMatchedBySize = new ArrayList<>();
-
-        for (int i = 0; i < allFilesSortedBySize.size() && allFilesSortedBySize.get(i).getSizeInBytes() <= maxBytes; i++) {
-            filesMatchedBySize.add(allFilesSortedBySize.get(i));
+        for (int i = 0; i < filesSortedBySize.size() && filesSortedBySize.get(i).getSizeInBytes() <= maxBytes; i++) {
+            filesMatchedBySize.add(filesSortedBySize.get(i));
         }
 
         return filesMatchedBySize;
     }
 
-    private ArrayList<FileData> sortBySize() {
-        ArrayList<FileData> allFilesSortedBySize = new ArrayList<>();
+    private ArrayList<FileData> sortSavedFilesBySize() {
 
+        ArrayList<FileData> allFilesSortedBySize = new ArrayList<>();
         for (Map.Entry<String, ArrayList<FileData>> entry : savedFiles.entrySet()) {
             allFilesSortedBySize.addAll(entry.getValue());
         }
-
         allFilesSortedBySize.sort(Comparator.comparingInt(FileData::getSizeInBytes));
 
         return allFilesSortedBySize;
     }
 
+    /**
+     * savedFiles are private, so that method is needed for interaction with HashMap
+     */
     public void remove(String path) {
         savedFiles.remove(path);
     }
