@@ -11,10 +11,6 @@ public class FileData {
         this.path = path;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int getSizeInBytes() {
         return sizeInBytes;
     }
