@@ -4,7 +4,7 @@ import java.util.*;
 
 public class FileNavigator {
 
-    private final HashMap<String, ArrayList<FileData>> savedFiles = new HashMap<>();
+    private final Map<String, ArrayList<FileData>> savedFiles = new HashMap<>();
 
     public void add(String path, FileData file) {
 
