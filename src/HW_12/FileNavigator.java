@@ -17,9 +17,6 @@ public class FileNavigator {
         savedFiles.get(path).add(file);
     }
 
-    /**
-     * savedFiles are private, so that method is like Getter (not wrapper)
-     */
     public ArrayList<FileData> find(String path) {
         return savedFiles.get(path);
     }
@@ -46,11 +43,7 @@ public class FileNavigator {
         return allFilesSortedBySize;
     }
 
-    /**
-     * savedFiles are private, so that method is needed for interaction with HashMap
-     */
     public void remove(String path) {
         savedFiles.remove(path);
     }
-
 }
