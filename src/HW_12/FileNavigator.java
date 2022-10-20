@@ -23,7 +23,7 @@ public class FileNavigator {
 
     public ArrayList<FileData> filterBySize(int maxBytes) {
 
-        ArrayList<FileData> filesSortedBySize = sortSavedFilesBySize();
+        ArrayList<FileData> filesSortedBySize = sortBySize();
         ArrayList<FileData> filesMatchedBySize = new ArrayList<>();
         for (int i = 0; i < filesSortedBySize.size() && filesSortedBySize.get(i).getSizeInBytes() <= maxBytes; i++) {
             filesMatchedBySize.add(filesSortedBySize.get(i));
@@ -32,7 +32,7 @@ public class FileNavigator {
         return filesMatchedBySize;
     }
 
-    private ArrayList<FileData> sortSavedFilesBySize() {
+    private ArrayList<FileData> sortBySize() {
 
         ArrayList<FileData> allFilesSortedBySize = new ArrayList<>();
         for (Map.Entry<String, ArrayList<FileData>> entry : savedFiles.entrySet()) {
