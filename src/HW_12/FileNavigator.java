@@ -34,13 +34,13 @@ public class FileNavigator {
 
     private ArrayList<FileData> sortBySize() {
 
-        ArrayList<FileData> allFilesSortedBySize = new ArrayList<>();
+        ArrayList<FileData> filesSortedBySize = new ArrayList<>();
         for (Map.Entry<String, ArrayList<FileData>> entry : savedFiles.entrySet()) {
-            allFilesSortedBySize.addAll(entry.getValue());
+            filesSortedBySize.addAll(entry.getValue());
         }
-        allFilesSortedBySize.sort(Comparator.comparingInt(FileData::getSizeInBytes));
+        filesSortedBySize.sort(Comparator.comparingInt(FileData::getSizeInBytes));
 
-        return allFilesSortedBySize;
+        return filesSortedBySize;
     }
 
     public void remove(String path) {
