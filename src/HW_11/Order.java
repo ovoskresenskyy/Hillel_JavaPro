@@ -1,12 +1,11 @@
 package HW_11;
 
 public class Order {
-    private static int lastOrderNumber;
     private final int number;
     private final String clientName;
 
-    public Order(String clientName) {
-        number = ++lastOrderNumber;
+    public Order(int number, String clientName) {
+        this.number = number;
         this.clientName = clientName;
     }
 

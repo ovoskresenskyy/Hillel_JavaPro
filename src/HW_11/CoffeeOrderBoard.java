@@ -4,34 +4,36 @@ import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
 
-    private final LinkedList<Order> orderList = new LinkedList<>();
+    private int lastOrderNumber;
+
+    private final LinkedList<Order> ordersInProgress = new LinkedList<>();
 
     public void add() {
         add("no name");
     }
 
     public void add(String clientName) {
-        orderList.addLast(new Order(clientName));
+        ordersInProgress.addLast(new Order(++lastOrderNumber, clientName));
     }
 
     public Order deliver() {
-        return orderList.isEmpty() ? null : orderList.removeFirst();
+        return ordersInProgress.isEmpty() ? null : ordersInProgress.removeFirst();
     }
 
     public Order deliver(int orderNumber) {
 
-        if (orderList.isEmpty()) return null;
+        if (ordersInProgress.isEmpty()) return null;
         Order orderToDeliver = null;
 
         int left = 0;
-        int right = orderList.size() - 1;
+        int right = ordersInProgress.size() - 1;
         while (left <= right) {
 
             int middle = left + (right - left) / 2;
-            if (orderList.get(middle).getNumber() > orderNumber) right = middle - 1;
-            else if (orderList.get(middle).getNumber() < orderNumber) left = middle + 1;
+            if (ordersInProgress.get(middle).getNumber() > orderNumber) right = middle - 1;
+            else if (ordersInProgress.get(middle).getNumber() < orderNumber) left = middle + 1;
             else {
-                orderToDeliver = orderList.remove(middle);
+                orderToDeliver = ordersInProgress.remove(middle);
                 break;
             }
         }
@@ -43,7 +45,7 @@ public class CoffeeOrderBoard {
         StringBuilder textToPrint = new StringBuilder();
         textToPrint.append("-----------\n Num | Name\n-----------\n");
 
-        for (Order order : orderList) {
+        for (Order order : ordersInProgress) {
             textToPrint.append(order);
         }
 
