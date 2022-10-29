@@ -50,6 +50,24 @@ public class BookParser {
         return sortedByValue;
     }
 
+    private void writeStatistic() {
+
+        File summaryStatistic = getStatisticFile();
+        try (FileWriter statisticRecorder = new FileWriter(summaryStatistic, false)) {
+            StringBuilder statistic = new StringBuilder()
+                    .append("Count of unique words in the book: ")
+                    .append(bookByWords.size())
+                    .append("\n")
+                    .append(getMostUsedWords());
+
+            System.out.println(statistic);
+            statisticRecorder.write(statistic.toString());
+            statisticRecorder.flush();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private File getStatisticFile(){
         String separator = System.getProperty("file.separator");
         StringBuilder path = new StringBuilder()
@@ -69,24 +87,6 @@ public class BookParser {
             }
         }
         return summaryStatistic;
-    }
-
-    private void writeStatistic() {
-
-        File summaryStatistic = getStatisticFile();
-        try (FileWriter statisticRecorder = new FileWriter(summaryStatistic, false)) {
-            StringBuilder statistic = new StringBuilder()
-                    .append("Count of unique words in the book: ")
-                    .append(bookByWords.size())
-                    .append("\n")
-                    .append(getMostUsedWords());
-
-            System.out.println(statistic);
-            statisticRecorder.write(statistic.toString());
-            statisticRecorder.flush();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private StringBuilder getMostUsedWords() {
