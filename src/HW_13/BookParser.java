@@ -90,7 +90,7 @@ public class BookParser {
         return summaryStatistic;
     }
 
-    private StringBuilder getMostUsedWords() {
+    private String getMostUsedWords() {
 
         int counter = 0;
         StringBuilder statistic = new StringBuilder("Ten most used words in the book:\n");
@@ -107,7 +107,7 @@ public class BookParser {
                     .append(entry.getValue())
                     .append(" times\n");
         }
-        return statistic;
+        return statistic.toString();
     }
 
 
