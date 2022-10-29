@@ -69,6 +69,7 @@ public class BookParser {
     }
 
     private File getStatisticFile(){
+
         String separator = System.getProperty("file.separator");
         StringBuilder path = new StringBuilder()
                 .append("src")
