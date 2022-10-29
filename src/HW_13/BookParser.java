@@ -8,6 +8,28 @@ public class BookParser {
     public Map<String, Integer> bookByWords = new HashMap<>();
     private String bookName;
 
+    public File getFileByName(String name) {
+        return getFileByName(new File("src/"), name);
+    }
+
+    private File getFileByName(File directory, String name) {
+
+        File foundedFile = new File(name);
+        for (File file : Objects.requireNonNull(directory.listFiles())) {
+            if (file.isDirectory() && !foundedFile.isFile()) {
+                foundedFile = getFileByName(file, name);
+            } else if (removeExtension(file.getName()).equalsIgnoreCase(name)) return file;
+        }
+        return foundedFile;
+    }
+
+    private String removeExtension(String fileName) {
+
+        int pointIndex = fileName.lastIndexOf(".");
+        if (pointIndex != -1) fileName = fileName.substring(0, pointIndex);
+        return fileName;
+    }
+
     public void startParser(File book) {
 
         bookName = book.getName();
@@ -108,28 +130,5 @@ public class BookParser {
                     .append(" times\n");
         }
         return statistic.toString();
-    }
-
-
-    private String removeExtension(String fileName) {
-
-        int pointIndex = fileName.lastIndexOf(".");
-        if (pointIndex != -1) fileName = fileName.substring(0, pointIndex);
-        return fileName;
-    }
-
-    public File getFileByName(String name) {
-        return getFileByName(new File("src/"), name);
-    }
-
-    private File getFileByName(File directory, String name) {
-
-        File foundedFile = new File(name);
-        for (File file : Objects.requireNonNull(directory.listFiles())) {
-            if (file.isDirectory() && !foundedFile.isFile()) {
-                foundedFile = getFileByName(file, name);
-            } else if (removeExtension(file.getName()).equalsIgnoreCase(name)) return file;
-        }
-        return foundedFile;
     }
 }
