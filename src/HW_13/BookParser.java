@@ -6,9 +6,11 @@ import java.util.*;
 public class BookParser {
 
     public Map<String, Integer> bookByWords = new HashMap<>();
+    private String bookName;
 
     public void startParser(File book) {
 
+        bookName = book.getName();
         readBook(book);
         writeStatistic();
     }
@@ -48,16 +50,30 @@ public class BookParser {
         return sortedByValue;
     }
 
+    private File getStatisticFile(){
+        String separator = System.getProperty("file.separator");
+        StringBuilder path = new StringBuilder()
+                .append("src")
+                .append(separator)
+                .append(this.getClass().getPackageName())
+                .append(separator)
+                .append(removeExtension(bookName))
+                .append("_statistic.txt");
+        File summaryStatistic = new File(path.toString());
+
+        if (!summaryStatistic.isFile()) {
+            try {
+                summaryStatistic.createNewFile();
+            } catch (IOException exception) {
+                throw new RuntimeException(exception);
+            }
+        }
+        return summaryStatistic;
+    }
+
     private void writeStatistic() {
 
-        String separator = System.getProperty("file.separator");
-        String path = "src"
-                + separator
-                + this.getClass().getPackageName()
-                + separator
-                + "Stats.txt";
-        File summaryStatistic = new File(path);
-
+        File summaryStatistic = getStatisticFile();
         try (FileWriter statisticRecorder = new FileWriter(summaryStatistic, false)) {
             StringBuilder statistic = new StringBuilder()
                     .append("Count of unique words in the book: ")
