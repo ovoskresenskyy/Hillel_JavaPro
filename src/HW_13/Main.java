@@ -6,16 +6,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        FileProcessing bookParser = new FileProcessing();
+        BookParser bookParser = new BookParser();
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please insert book name to search: ");
 
-        File book = bookParser.findFileByName(scanner.nextLine());
-        if (book.isFile()) {
-            bookParser.parseBook(book);
-        } else {
-            System.out.println("File with that name doesn't exist.");
-        }
+        File book = bookParser.getFileByName(scanner.nextLine());
+        if (book.isFile()) bookParser.startParser(book);
+        else System.out.println("File with that name doesn't exist.");
+
+        scanner.close();
     }
 }

@@ -1,4 +1,4 @@
-Count of unique words in the book: 9042
+Count of unique words in the book: 9041
 Ten most used words in the book:
 1. the -> 3 symbols. Used: 8130 times
 2. and -> 3 symbols. Used: 4948 times
