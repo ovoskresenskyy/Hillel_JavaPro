@@ -52,11 +52,9 @@ public class BookParser {
 
         String[] lineWords = line.trim().split("\\s+");
         for (String word : lineWords) {
-
             String wordAsKey = word.toLowerCase().replaceAll("[^a-z]", "");
             if (wordAsKey.length() <= 2) continue;
-            if (!bookByWords.containsKey(wordAsKey)) bookByWords.put(wordAsKey, 0);
-            bookByWords.put(wordAsKey, bookByWords.get(wordAsKey) + 1);
+            bookByWords.put(wordAsKey, bookByWords.getOrDefault(wordAsKey, 0) + 1);
         }
     }
 
