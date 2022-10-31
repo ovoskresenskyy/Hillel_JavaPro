@@ -18,7 +18,7 @@ public class BookParser {
         for (File file : Objects.requireNonNull(directory.listFiles())) {
             if (file.isDirectory() && !foundedFile.isFile()) {
                 foundedFile = getFileByName(file, name);
-            } else if (removeExtension(file.getName()).equalsIgnoreCase(name)) return file;
+            } else if (removeExtension(file.getName()).equalsIgnoreCase(removeExtension(name))) return file;
         }
         return foundedFile;
     }
