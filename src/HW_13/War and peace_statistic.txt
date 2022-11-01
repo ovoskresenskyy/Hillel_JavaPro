@@ -1,0 +1,12 @@
+Count of unique words in the book: 9041
+Ten most used words in the book:
+1. the -> 3 symbols. Used: 8130 times
+2. and -> 3 symbols. Used: 4948 times
+3. his -> 3 symbols. Used: 2058 times
+4. was -> 3 symbols. Used: 1642 times
+5. that -> 4 symbols. Used: 1608 times
+6. with -> 4 symbols. Used: 1387 times
+7. you -> 3 symbols. Used: 1150 times
+8. had -> 3 symbols. Used: 1087 times
+9. not -> 3 symbols. Used: 1045 times
+10. her -> 3 symbols. Used: 1030 times
