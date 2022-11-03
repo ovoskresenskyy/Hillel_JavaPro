@@ -22,9 +22,4 @@ public class StreamDemo {
                 });
     }
 
-    public void printColor(){
-        int i = 1;
-
-    }
-
 }
