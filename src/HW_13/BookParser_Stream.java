@@ -27,7 +27,7 @@ public class BookParser_Stream {
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                     .entrySet()
                     .stream()
-                    .sorted((Map.Entry<String, Long> first, Map.Entry<String, Long> second) -> (int) (second.getValue() - first.getValue()))
+                    .sorted(Map.Entry.comparingByValue())
                     .limit(10)
                     .forEach(stringLongEntry -> System.out.println(stringLongEntry.getKey() + " -> " + stringLongEntry.getValue()));
 
