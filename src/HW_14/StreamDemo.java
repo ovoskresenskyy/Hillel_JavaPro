@@ -32,7 +32,7 @@ public class StreamDemo {
     public Product getLowestPriceProductByType(String type) throws NoSuchElementException {
         return products.stream()
                 .filter(product -> product.getType().equals(type))
-                .reduce((left, right) -> left.getPrice() < right.getPrice() ? left : right)
+                .min(Comparator.comparing(Product::getPrice))
                 .orElseThrow(NoSuchElementException::new);
     }
 
